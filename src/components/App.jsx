@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-// import { Statistics } from './Statistics/Statistics';
+import { Statistics } from './Statistics/Statistics';
 // import Feedback from './Feedback/Feedback';
 
 class App extends Component {
@@ -41,9 +41,9 @@ class App extends Component {
   }
 
   render() {
-    // const { good, neutral, bad } = this.props;
-    // const totalFeedback = this.countTotalFeedback();
-    // const procentGoodFeedback = this.countPositiveFeedbackPercentage();
+    const { good, neutral, bad } = this.props;
+    const totalFeedback = this.countTotalFeedback();
+    const procentGoodFeedback = this.countPositiveFeedbackPercentage();
 
     console.log(this.state);
 
@@ -52,6 +52,7 @@ class App extends Component {
         style={{
           height: '100vh',
           display: 'flex',
+          flexDirection: 'column',
           backgroundColor: '#dbffff',
           justifyContent: 'center',
           alignItems: 'center',
@@ -62,9 +63,9 @@ class App extends Component {
         <Section title="Пожалуйста, оставьте отзыв">
           <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.addFeedback}></FeedbackOptions>
         </Section>
-        {/* <Section title="Statistics">
-          <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={procentGoodFeedback}></Statistics>
-        </Section> */}
+        <Section title="Statistics">
+          <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={procentGoodFeedback} />
+        </Section>
       </div>
     );
   }
