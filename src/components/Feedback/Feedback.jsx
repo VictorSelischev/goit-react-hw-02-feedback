@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './Feedback.module.css';
 
 class Feedback extends Component {
@@ -8,6 +9,12 @@ class Feedback extends Component {
     bad: 0,
   };
 
+  static propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+  }
+
   state = {
     good: this.props.good,
     neutral: this.props.neutral,
@@ -15,7 +22,7 @@ class Feedback extends Component {
   };
 
   render() {
-    console.log(css);
+    // console.log(css);
 
     const { good, neutral, bad } = this.props;
     return (
