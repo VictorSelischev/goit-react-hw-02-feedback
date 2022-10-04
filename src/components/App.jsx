@@ -5,11 +5,11 @@ export const App = () => {
     <div
       style={{
         height: '100vh',
-        padding: '40px',
         display: 'flex',
+        backgroundColor: '#dbffff',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
+        // fontSize: 40,
         color: '#010101'
       }}
     >

@@ -9,25 +9,26 @@ class Feedback extends Component {
   };
 
   render() {
+    console.log(css);
     return (
-      <div>
+      <div className={css.section}>
         <h2 className={css.section__title}>Пожалуйста, оставьте отзыв</h2>
-        <ul className={css.section__buttonList, css.list}>
-          <li>
+        <ul className={css.section__buttonList}>
+          <li className={css.section__buttonListItem}>
             <button>Good</button>
           </li>
-          <li>
+          <li className={css.section__buttonListItem}>
             <button>Neutral</button>
           </li>
-          <li>
+          <li className={css.section__buttonListItem}>
             <button>Bad</button>
           </li>
         </ul>
         <h2 className={css.section__title}>Statistics</h2>
         <ul>
-          <li>Good: 3</li>
-          <li>Neutral: 2</li>
-          <li>Bad: 2</li>
+          <li className={css.section__listItem}>Good: 3</li>
+          <li className={css.section__listItem}>Neutral: 2</li>
+          <li className={css.section__listItem}>Bad: 2</li>
         </ul>
       </div>
     );
