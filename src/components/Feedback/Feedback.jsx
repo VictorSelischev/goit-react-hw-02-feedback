@@ -15,13 +15,13 @@ class Feedback extends Component {
         <h2 className={css.section__title}>Пожалуйста, оставьте отзыв</h2>
         <ul className={css.section__buttonList}>
           <li className={css.section__buttonListItem}>
-            <button>Good</button>
+            <button className={css.section__button}>Good</button>
           </li>
           <li className={css.section__buttonListItem}>
-            <button>Neutral</button>
+            <button className={css.section__button}>Neutral</button>
           </li>
           <li className={css.section__buttonListItem}>
-            <button>Bad</button>
+            <button className={css.section__button}>Bad</button>
           </li>
         </ul>
         <h2 className={css.section__title}>Statistics</h2>
