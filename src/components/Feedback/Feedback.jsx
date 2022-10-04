@@ -13,7 +13,7 @@ class Feedback extends Component {
     good: PropTypes.number,
     neutral: PropTypes.number,
     bad: PropTypes.number,
-  }
+  };
 
   state = {
     good: this.props.good,
@@ -21,10 +21,23 @@ class Feedback extends Component {
     bad: this.props.bad,
   };
 
-  render() {
-    // console.log(css);
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
 
-    const { good, neutral, bad } = this.props;
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    let procentGood = 0 ;
+    total === 0 ? procentGood = 0 : procentGood = Math.round((this.state.good / total) * 100);
+    return procentGood;
+  }
+
+  render() {
+    const { good, neutral, bad } = this.state;
+    const totalFeedback = this.countTotalFeedback();
+    const procentGoodFeedback = this.countPositiveFeedbackPercentage();
+
     return (
       <div className={css.section}>
         <h2 className={css.section__title}>Пожалуйста, оставьте отзыв</h2>
@@ -44,6 +57,10 @@ class Feedback extends Component {
           <li className={css.section__listItem}>Good: {good}</li>
           <li className={css.section__listItem}>Neutral: {neutral}</li>
           <li className={css.section__listItem}>Bad: {bad}</li>
+          <li className={css.section__listItem}>Total: {totalFeedback}</li>
+          <li className={css.section__listItem}>
+            Positive feedback: {procentGoodFeedback}%
+          </li>
         </ul>
       </div>
     );

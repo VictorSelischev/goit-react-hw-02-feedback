@@ -13,7 +13,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      <Feedback />
+      <Feedback  />
     </div>
   );
 };
