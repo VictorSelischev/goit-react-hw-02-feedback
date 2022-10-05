@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
 // import Feedback from './Feedback/Feedback';
 
 class App extends Component {
@@ -32,13 +33,13 @@ class App extends Component {
   countPositiveFeedbackPercentage = () => {
     const total = this.countTotalFeedback();
     let procentGood = 0;
-    total === 0 ? procentGood = 0 : procentGood = Math.round((this.state.good / total) * 100);
+    total === 0
+      ? (procentGood = 0)
+      : (procentGood = Math.round((this.state.good / total) * 100));
     return procentGood;
   };
 
-  addFeedback = key => {
-
-  }
+  addFeedback = key => {};
 
   render() {
     const { good, neutral, bad } = this.props;
@@ -60,12 +61,27 @@ class App extends Component {
           color: '#010101',
         }}
       >
-        <Section title="Пожалуйста, оставьте отзыв">
-          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.addFeedback}></FeedbackOptions>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.addFeedback}
+          ></FeedbackOptions>
         </Section>
-        <Section title="Statistics">
-          <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={procentGoodFeedback} />
-        </Section>
+
+        {totalFeedback === 0 ? (
+          <Notification message="There is no feedback" />
+        ) : (
+          <Section title="Statistics">
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={totalFeedback}
+              positivePercentage={procentGoodFeedback}
+            />
+          </Section>
+        )}
+        
       </div>
     );
   }
