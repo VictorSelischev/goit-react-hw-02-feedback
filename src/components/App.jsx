@@ -39,14 +39,26 @@ class App extends Component {
     return procentGood;
   };
 
-  addFeedback = key => {};
+  addFeedback = evt => {
+    // console.log(evt);
+    // console.log(evt.currentTarget);
+    // console.log(evt.target);
+    const { textContent } = evt.target;
+    const key = textContent.toLowerCase();
+    // console.log(key);
+    this.setState(prevState => {
+      return {
+        [key]: prevState[key] + 1,
+      };
+    });
+  };
 
   render() {
-    const { good, neutral, bad } = this.props;
+    const { good, neutral, bad } = this.state;
     const totalFeedback = this.countTotalFeedback();
     const procentGoodFeedback = this.countPositiveFeedbackPercentage();
 
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <div
@@ -81,7 +93,6 @@ class App extends Component {
             />
           </Section>
         )}
-        
       </div>
     );
   }
