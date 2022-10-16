@@ -77,7 +77,7 @@ class App extends Component {
           <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.addFeedback}
-          ></FeedbackOptions>
+          />
         </Section>
 
         {totalFeedback === 0 ? (
